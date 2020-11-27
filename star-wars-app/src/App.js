@@ -2,14 +2,15 @@ import './App.css';
 import Alert from './Alert';
 import React from 'react'
 import logo from './logo.svg';
-import Starwarspeople from './Starwarspeople';
+import Starwarscharacter from './Starwarscharacter'
 // import axios from 'axios'
 export default class App extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
     counter: 0,
-    json:"JSON"
+    json:[],
+    people:[]
   }
 }
 componentDidMount() {
@@ -21,20 +22,19 @@ componentDidMount() {
     fetch('https://swapi.dev/api/people/')
     .then(response => response.json())
     .then(response=>this.setState({json:response.results}));
-    
     fetch('https://swapi.dev/api/people/')
     .then(response => response.json())
-    .then(response=>console.log(response.results));
-    this.constructPeople()
+    .then(response=>this.constructPeople());
+  fetch('https://swapi.dev/api/people/')
+  .then(response => response.json())
+  .then(response => console.log(response.results))
 }
 
-constructPeople(){
-  if (this.json!=="JSON") {
-    console.log(this.state.json.results)
+  constructPeople(){
 
-  }else{
-    setTimeout(this.constructPeople,200)
-  }
+    this.state.json.map((character)=>this.state.people.push(character.name))
+    console.log(this.state.json)
+    console.log(this.state.people)
 }
 
 
@@ -56,7 +56,7 @@ constructPeople(){
       </a>
       <div>{this.state.counter}</div>
       <Alert count={this.state.counter}></Alert>
-      <div>{JSON.stringify(this.state.json)}</div>
+      <div>{JSON.stringify(this.state.people)}</div>
 
       {/* <Starwarspeople json={this.state.json} ></Starwarspeople> */}
       </header>
