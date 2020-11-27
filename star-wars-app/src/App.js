@@ -9,7 +9,7 @@ constructor(props) {
   super(props);
   this.state = {
     counter: 0,
-    json:""
+    json:"JSON"
   }
 }
 componentDidMount() {
@@ -20,14 +20,24 @@ componentDidMount() {
     }, 1000)
     fetch('https://swapi.dev/api/people/')
     .then(response => response.json())
-    .then(data => console.error(data));
-
-    // .then(res=>res.json())
-    // .then((res)=>{
-    //     this.setState({json:res})
+    .then(response=>this.setState({json:response.results}));
     
-  
-};
+    fetch('https://swapi.dev/api/people/')
+    .then(response => response.json())
+    .then(response=>console.log(response.results));
+    this.constructPeople()
+}
+
+constructPeople(){
+  if (this.json!=="JSON") {
+    console.log(this.state.json.results)
+
+  }else{
+    setTimeout(this.constructPeople,200)
+  }
+}
+
+
   render() {
     return (
       <div className="App">
@@ -47,6 +57,7 @@ componentDidMount() {
       <div>{this.state.counter}</div>
       <Alert count={this.state.counter}></Alert>
       <div>{JSON.stringify(this.state.json)}</div>
+
       {/* <Starwarspeople json={this.state.json} ></Starwarspeople> */}
       </header>
       </div>
