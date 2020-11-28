@@ -9,16 +9,22 @@ export default class Starwarspeople extends React.Component {
 
         return (
     <table border="1">
+        <thead>
+            <tr>
+                <th ></th>
+                <th colspan="10">Personajes</th>
+            </tr>
+        </thead>
         <tbody>
-        <tr>
-            <td>Personajes</td>
-        </tr>
 
-        <td>{
-            names.map((name)=>
+        <td>
+            Nombre
+        </td>
+        
+            {names.map((name)=>
             <Starwarscharacter name={name}></Starwarscharacter>)
             }
-        </td>
+        
         </tbody>
     </table>
             )
