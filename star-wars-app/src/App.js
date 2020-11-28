@@ -8,9 +8,7 @@ constructor(props) {
   super(props);
   this.state = {
     counter: 0,
-    json:[],
-    people:[],
-    showpeople:false
+    json:[]
   }
 }
 componentDidMount() {
@@ -29,10 +27,7 @@ componentDidMount() {
   constructPeople(props){
 
     this.setState({json:props.results})
-    this.state.json.map((character)=>this.state.people.push(character.name))
-    this.setState({showpeople:true})
-    // console.log(this.state.json)
-    // console.log(this.state.people)
+    console.log(this.state.json)
 }
 
 

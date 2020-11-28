@@ -12,7 +12,7 @@ export default class Starwarspeople extends React.Component {
         <thead>
             <tr>
                 <th ></th>
-                <th colspan="10">Personajes</th>
+                <th colSpan="10">Personajes</th>
             </tr>
         </thead>
         <tbody>
