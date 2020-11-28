@@ -2,17 +2,26 @@ import './App.css';
 import React from 'react'
 import Starwarscharacter from './Starwarscharacter'
 export default class Starwarspeople extends React.Component {
-
-    characters(props) {
-        return([].push(this.props.map((character)=>Starwarscharacter(character.name))))
-    }
     
     render(props) {
-        
+        const names=[];
+        names:this.props.json.map((character)=>names.push(character.name));
+
         return (
-       <div>
-           
-        </div>
-        );
+    <table border="1">
+        <tbody>
+        <tr>
+            <td>Personajes</td>
+        </tr>
+
+        <td>{
+            names.map((name)=>
+            <Starwarscharacter name={name}></Starwarscharacter>)
+            }
+        </td>
+        </tbody>
+    </table>
+            )
         }
+    
 }

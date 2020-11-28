@@ -1,9 +1,11 @@
 import './App.css';
-export default class starwarcharacter {
+import React from 'react'
+export default class Starwarcharacter extends React.Component{
     render(props){
-        this.state = {
-            name: props.name
-          }
-          console.log(this.state.name);
+        return (
+        <td>
+            {this.props.name}
+        </td>
+             );
     }
 }
